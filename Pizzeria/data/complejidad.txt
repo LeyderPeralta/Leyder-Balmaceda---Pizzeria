@@ -1,0 +1,71 @@
+agregarPedido(String, double, int)
+Descripción:
+Crea un nuevo Pedido y lo inserta en pedidosRecibidos (MaxHeap).
+
+Complejidad temporal:
+
+Inserción en heap: O(log n)
+Porque en el peor caso se recorre desde el nuevo nodo hacia la raíz para mantener el orden del heap.
+
+Complejidad espacial:
+
+O(1) adicional (más el espacio que ocupa el nuevo pedido).
+
+atenderPedido()
+Descripción:
+Elimina el pedido con el mayor precio del MaxHeap y lo inserta en el MinHeap (para luego despacharlo por cercanía).
+
+Complejidad temporal:
+
+eliminar() en MaxHeap: O(log n)
+
+insertar() en MinHeap: O(log n)
+Total: O(log n) + O(log m) → O(log n + log m)
+
+Donde n es el número de pedidos recibidos, y m el número de pedidos atendidos.
+
+Complejidad espacial:
+
+O(1) (no se crea un nuevo objeto, solo se mueve entre estructuras).
+
+ despacharPedido()
+Descripción:
+Elimina el pedido con menor cercanía del MinHeap.
+
+Complejidad temporal:
+
+eliminar() en MinHeap: O(log m)
+
+Complejidad espacial:
+
+O(1)
+
+
+aLista() en los heaps
+Descripción:
+Convierte el heap en una lista (ArrayList<Pedido>), normalmente para visualizar o imprimir.
+
+Complejidad temporal:
+
+Suponiendo que solo se recorre internamente la lista del heap sin alterar el orden:
+O(n)
+
+Complejidad espacial:
+
+O(n), para almacenar la copia en la lista.
+
+ procesarComando(String)
+Descripción:
+Interpreta un comando y llama internamente a métodos como agregarPedido, atenderPedido, etc.
+
+Complejidad temporal:
+
+Depende del comando:
+
+"RECIBIR" → O(log n)
+
+"ATENDER" → O(log n + log m)
+
+"DESPACHAR" → O(log m)
+
+"SALIR" o no reconocido → O(1)
